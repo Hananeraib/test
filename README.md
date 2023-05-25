@@ -1,3 +1,5 @@
 # What this project is about? #
 ---
-I create this projject to test the GitLab features in order to complete my end of studies project, PFE.
+This is my End-of-studies project. It consist to design and to implement a CI CD pipeline from the scratch to the end.
+
+Released since Feb 2023
