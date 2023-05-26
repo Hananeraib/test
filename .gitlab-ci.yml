@@ -29,6 +29,7 @@ deploy:
   script:
     # - ansible --version
     - ansible-playbook copydockercompose.yml
+    - ansible-playbook production.play.yml
 # down_compose:
 #   stage: .post
 #   script:
