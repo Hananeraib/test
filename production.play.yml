@@ -9,8 +9,8 @@
   - name: log to private registry
     docker_login:
       registry: vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
-      username: admin
-      password: JFrog@dmin2023
+      username: gitlab
+      password: Gitlab 2023
       # reauthorize: true
 
   # - name: test docker-compose 
