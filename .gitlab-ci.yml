@@ -13,13 +13,13 @@ stages:
   - build
   - deploy
 
-build:
-  stage: build
-  before_script:
-  - docker login -u gitlab -p "Gitlab 2023" vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
-  script:
-    - docker compose build
-    - docker compose push
+# build:
+#   stage: build
+#   before_script:
+#   - docker login -u gitlab -p "Gitlab 2023" vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
+#   script:
+#     - docker compose build
+#     - docker compose push
 
 
 deploy:
@@ -30,10 +30,3 @@ deploy:
     # - ansible --version
     - ansible-playbook copydockercompose.yml
     - ansible-playbook production.play.yml
-# down_compose:
-#   stage: .post
-#   script:
-#     - docker images
-#     - docker ps
-#     - docker compose down
-#   when: manual
