@@ -1,0 +1,32 @@
+stages:
+  - build
+
+default:
+  tags:
+    - docker
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+
+
+variables:
+  DOCKER_TLS_CERTDIR: ""
+image: docker:20.10.16
+services:
+  - docker:20.10.16-dind
+
+build:
+  stage: .post
+  before_script:
+  - docker info
+  script:
+    - docker compose build
+    - docker compose up -d
+
+down_compose:
+  stage: stop_all
+  script:
+    - docker images
+    - docker ps
+    - docker compose down
+  when: manual
