@@ -13,10 +13,34 @@ services:
       - postgres:/var/lib/postgresql/data
     ports:
       - 5432:5432
+  # backend:
+  #   build:
+  #     context: ./django
+  #   image: backend
+  #   container_name: backend
+  #   hostname: backend
+  #   # tty: true
+  #   networks:
+  #     - web
+  #     - backend
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     - database
+  # frontend:
+  #   build:
+  #     context: ./react/blogapi
+  #   container_name: frontend
+  #   hostname: frontend
+  #   image: frontend
+  #   networks:
+  #     - web
+  #   ports:
+  #     - 3000:3000
+  #   depends_on:
+  #     - backend
   backend:
-    build:
-      context: ./django
-    image: backend
+    image: vps-da62cdaf.vps.ovh.net:8082/pfeblog/backend:latest
     container_name: backend
     hostname: backend
     # tty: true
@@ -28,11 +52,9 @@ services:
     depends_on:
       - database
   frontend:
-    build:
-      context: ./react/blogapi
+    image: vps-da62cdaf.vps.ovh.net:8082/pfeblog/frontend:latest
     container_name: frontend
     hostname: frontend
-    image: frontend
     networks:
       - web
     ports:
