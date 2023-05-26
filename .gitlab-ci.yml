@@ -13,13 +13,13 @@ stages:
   - build
   - deploy
 
-build:
-  stage: build
-  before_script:
-  - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
-  script:
-    - docker compose build
-    - docker compose push
+# build:
+#   stage: build
+#   before_script:
+#   - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
+#   script:
+#     - docker compose build
+#     - docker compose push
 
 
 deploy:
@@ -27,6 +27,7 @@ deploy:
   tags:
     - ansible
   script:
-    # - ansible --version
-    - ansible-playbook copydockercompose.yml
-    - ansible-playbook production.play.yml
+    # # - ansible --version
+    # - ansible-playbook copydockercompose.yml
+    # - ansible-playbook production.play.yml
+    - echo $(pwd)
