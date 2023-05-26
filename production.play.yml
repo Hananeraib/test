@@ -8,7 +8,7 @@
   tasks: 
   - name: log to private registry
     docker_login:
-      registry: vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
+      registry: 51.75.202.237:8082/artifactory/pfeblog/
       username: gitlab
       password: JFrog@dmin2023
 
