@@ -18,6 +18,7 @@
       project_src: ./pfeblog/
       files:
       - docker-compose.prod.yml
+      build: true
       state: present 
 
  
