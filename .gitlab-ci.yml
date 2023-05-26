@@ -28,6 +28,7 @@ deploy:
     - bash
   script:
     - ls
+    - cd
     # - ansible-playbook copydockercompose.yml
 # down_compose:
 #   stage: .post
