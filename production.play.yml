@@ -9,7 +9,7 @@
   - name: log to private registry
     docker_login:
       registry: 51.75.202.237:8082/artifactory/pfeblog/
-      username: gitlab
+      username: admin
       password: JFrog@dmin2023
 
   # - name: test docker-compose 
