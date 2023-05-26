@@ -2,8 +2,8 @@ image: docker:20.10.16
 variables:
   DOCKER_TLS_CERTDIR: ""
 services:
-  - docker:20.10.16-dind
-
+  - name: docker:dind
+    command: ["--insecure-registry=vps-da62cdaf.vps.ovh.net:8082"]
 default:
   tags:
     - docker
