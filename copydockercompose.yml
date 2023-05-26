@@ -10,3 +10,8 @@
     copy: 
       src: ./docker-compose.prod.yml 
       dest: ./pfeblog/
+
+  - name: copy nginx conf
+    copy: 
+      src: ./nginx 
+      dest: ./pfeblog/
