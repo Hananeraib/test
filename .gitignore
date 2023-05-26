@@ -3,3 +3,7 @@
 
 #ignore gitlab ci guide file
 .gitlab-ci.Guide.txt
+
+#ignore backup dump
+backup.sql
+backup.tar
