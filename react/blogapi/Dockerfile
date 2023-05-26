@@ -1,7 +1,6 @@
 FROM node:14-alpine
 WORKDIR /react
 COPY package*.json ./
-RUN npm audit fix
 RUN npm audit fix --force
 RUN npm install
 RUN npm install axios
