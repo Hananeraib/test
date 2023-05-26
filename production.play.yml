@@ -11,6 +11,7 @@
       registry: 51.75.202.237:8082/artifactory/pfeblog/
       username: admin
       password: JFrog@dmin2023
+      reauthorize: true
 
   - name: test docker-compose 
     community.docker.docker_compose: 
