@@ -11,7 +11,7 @@
       registry: vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
       username: admin
       password: JFrog@dmin2023
-      reauthorize: true
+      # reauthorize: true
 
   # - name: test docker-compose 
   #   community.docker.docker_compose: 
