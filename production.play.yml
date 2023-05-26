@@ -13,11 +13,18 @@
       password: Gitlab 2023
       # reauthorize: true
 
-  - name: test docker-compose 
+  - name: pull & build docker-compose 
     community.docker.docker_compose: 
       project_src: ./pfeblog/
       files:
       - docker-compose.prod.yml
+      pull: true
       build: true
-      state: present 
+      state: false 
+
+  - name: run docker-compose 
+    community.docker.docker_compose: 
+      project_src: ./pfeblog/
+      files:
+      - docker-compose.prod.yml
  
