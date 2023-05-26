@@ -3,14 +3,15 @@ variables:
   DOCKER_TLS_CERTDIR: ""
 services:
   - name: docker:dind
+    #Add our registry to insecure registry group
     command: ["--insecure-registry=vps-da62cdaf.vps.ovh.net:8082"]
 default:
   tags:
     - docker
 
-
 stages:
   - build
+  - deploy
 
 build:
   stage: build
@@ -20,6 +21,14 @@ build:
     - docker compose build
     - docker compose push
 
+
+deploy:
+  stage: deploy
+  tags:
+    - bash
+  script:
+    - ansible all -i hosts -m ping
+    # - ansible-playbook copydockercompose.yml
 # down_compose:
 #   stage: .post
 #   script:
