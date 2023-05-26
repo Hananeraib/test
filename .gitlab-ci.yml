@@ -1,13 +1,13 @@
-image: docker:20.10.16
-variables:
-  DOCKER_TLS_CERTDIR: ""
-services:
-  - name: docker:dind
-    #Add our registry to insecure registry group
-    command: ["--insecure-registry=vps-da62cdaf.vps.ovh.net:8082"]
-default:
-  tags:
-    - docker
+# image: docker:20.10.16
+# variables:
+#   DOCKER_TLS_CERTDIR: ""
+# services:
+#   - name: docker:dind
+#     #Add our registry to insecure registry group
+#     command: ["--insecure-registry=vps-da62cdaf.vps.ovh.net:8082"]
+# default:
+#   tags:
+#     - docker
 
 stages:
   # - build
