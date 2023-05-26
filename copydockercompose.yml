@@ -13,5 +13,5 @@
 
   - name: copy nginx conf
     copy: 
-      src: ./nginx 
+      src: nginx/
       dest: ./pfeblog
