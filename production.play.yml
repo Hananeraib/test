@@ -26,19 +26,19 @@
       files:
       - docker-compose.prod.yml
       pull: true
-      state: absent 
+      state: present 
 
-  - name: pull & build docker-compose 
+  - name: build docker-compose 
     community.docker.docker_compose: 
       project_src: ./pfeblog/
       files:
       - docker-compose.prod.yml
       build: true
-      state: absent 
+      state: present 
 
-  - name: run docker-compose 
-    community.docker.docker_compose: 
-      project_src: ./pfeblog/
-      files:
-      - docker-compose.prod.yml
+  # - name: run docker-compose 
+  #   community.docker.docker_compose: 
+  #     project_src: ./pfeblog/
+  #     files:
+  #     - docker-compose.prod.yml
  
