@@ -14,8 +14,8 @@ stages:
 
 build:
   stage: build
-  before_script:
-  - docker info
+  # before_script:
+  # - docker info
   script:
     - docker compose build
     - docker compose up -d
