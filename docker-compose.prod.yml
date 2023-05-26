@@ -1,18 +1,6 @@
 version: '3.9'
 
 services:
-  database:
-    image: postgres:13.9
-    environment:
-      POSTGRES_USER: blogadmin
-      POSTGRES_PASSWORD: blogadmin
-      POSTGRES_DB: blog
-    networks:
-      - backend
-    volumes:
-      - postgres:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
   # backend:
   #   build:
   #     context: ./django
@@ -39,6 +27,18 @@ services:
   #     - 3000:3000
   #   depends_on:
   #     - backend
+  database:
+    image: postgres:13.9
+    environment:
+      POSTGRES_USER: blogadmin
+      POSTGRES_PASSWORD: blogadmin
+      POSTGRES_DB: blog
+    networks:
+      - backend
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
   backend:
     image: vps-da62cdaf.vps.ovh.net:8082/pfeblog/backend:latest
     container_name: backend
