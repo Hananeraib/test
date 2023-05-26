@@ -13,7 +13,7 @@ function App() {
 
 	useEffect(() => {
 		setAppState({ loading: true });
-		const apiUrl = `http://localhost:8080/api/`;
+		const apiUrl = `http://vps-d2235e42.vps.ovh.net/:8080/api/`;
 		// const apiUrl = `backend:8000/api`;
 		fetch(apiUrl)
 			.then((data) => data.json())

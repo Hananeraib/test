@@ -1,25 +1,25 @@
-# image: docker:20.10.16
-# variables:
-#   DOCKER_TLS_CERTDIR: ""
-# services:
-#   - name: docker:dind
-#     #Add our registry to insecure registry group
-#     command: ["--insecure-registry=vps-da62cdaf.vps.ovh.net:8082"]
-# default:
-#   tags:
-#     - docker
+image: docker:20.10.16
+variables:
+  DOCKER_TLS_CERTDIR: ""
+services:
+  - name: docker:dind
+    #Add our registry to insecure registry group
+    command: ["--insecure-registry=vps-da62cdaf.vps.ovh.net:8082"]
+default:
+  tags:
+    - docker
 
 stages:
-  # - build
+  - build
   - deploy
 
-# build:
-#   stage: build
-#   before_script:
-#   - docker login -u admin -p "JFrog@dmin2023" vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
-#   script:
-#     - docker compose build
-#     - docker compose push
+build:
+  stage: build
+  before_script:
+  - docker login -u gitlab -p "Gitlab 2023" vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
+  script:
+    - docker compose build
+    - docker compose push
 
 
 deploy:
