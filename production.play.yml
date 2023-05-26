@@ -6,15 +6,16 @@
     ansible_python_interpreter: /usr/bin/python3 
 
   tasks: 
-    - name: copy docker-compose.yml 
-      copy: 
-        src: ./docker-compose.prod.yml 
-        dest: . 
+  - name: log to private registry
+    docker_login:
+      registry: vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
+      username: gitlab
+      password: JFrog@dmin2023
 
-#    - name: test docker-compose 
-#      community.docker.docker_compose: 
-#        project_src: ./compose/ 
-#        state: present 
+  # - name: test docker-compose 
+  #   community.docker.docker_compose: 
+  #     project_src: ./compose/ 
+  #     state: present 
 
  
 
