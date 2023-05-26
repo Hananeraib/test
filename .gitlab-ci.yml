@@ -16,7 +16,6 @@ stages:
 build:
   stage: build
   before_script:
-  - echo $REGISTRY_USERNAME
   - docker login -u ${REGISTRY_USERNAME} -p ${REGISTRY_PASSWORD} vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
   script:
     - docker compose build
