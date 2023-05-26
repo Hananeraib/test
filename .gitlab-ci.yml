@@ -27,7 +27,7 @@ deploy:
   tags:
     - bash
   script:
-    - ansible all -i hosts.yml -m ping
+    - ansible --version
     # - ansible-playbook copydockercompose.yml
 # down_compose:
 #   stage: .post
