@@ -27,7 +27,7 @@ deploy:
   tags:
     - bash
   script:
-    - sudo docker ps
+    - ansible --version
     # - ansible-playbook copydockercompose.yml
 # down_compose:
 #   stage: .post
