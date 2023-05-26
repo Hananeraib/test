@@ -20,7 +20,7 @@
       - docker-compose.prod.yml
       pull: true
       build: true
-      state: false 
+      state: absent 
 
   - name: run docker-compose 
     community.docker.docker_compose: 
