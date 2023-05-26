@@ -14,16 +14,16 @@ stages:
 
 build:
   stage: build
-  # before_script:
-  # - docker info
+  before_script:
+  - docker login -u admin -p "JFrog@dmin2023" vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
   script:
     - docker compose build
-    - docker compose up -d
+    - docker compose push
 
-down_compose:
-  stage: .post
-  script:
-    - docker images
-    - docker ps
-    - docker compose down
-  when: manual
+# down_compose:
+#   stage: .post
+#   script:
+#     - docker images
+#     - docker ps
+#     - docker compose down
+#   when: manual
