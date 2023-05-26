@@ -4,6 +4,9 @@
 #ignore gitlab ci guide file
 .gitlab-ci.Guide.txt
 
+#ignore docker guide file
+DockerCommand.txt
+
 #ignore backup dump
 backup.sql
 backup.tar
