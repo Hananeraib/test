@@ -9,4 +9,4 @@
   - name: copy docker-compose.yml 
     copy: 
       src: ./docker-compose.prod.yml 
-      dest: . 
+      dest: ./pfe/

@@ -14,7 +14,9 @@
 
   # - name: test docker-compose 
   #   community.docker.docker_compose: 
-  #     project_src: ./compose/ 
+  #     project_src: ./pfe/
+  #     files:
+  #     - docker-compose.prod.yml
   #     state: present 
 
  
