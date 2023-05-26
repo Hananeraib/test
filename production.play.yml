@@ -12,12 +12,12 @@
       username: admin
       password: JFrog@dmin2023
 
-  # - name: test docker-compose 
-  #   community.docker.docker_compose: 
-  #     project_src: ./pfe/
-  #     files:
-  #     - docker-compose.prod.yml
-  #     state: present 
+  - name: test docker-compose 
+    community.docker.docker_compose: 
+      project_src: ./pfeblog/
+      files:
+      - docker-compose.prod.yml
+      state: present 
 
  
 
