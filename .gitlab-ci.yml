@@ -20,7 +20,7 @@ stages:
 #   script:
 #     - docker compose build
 #     - docker compose push
-build_backend:
+build_frontend:
   stage: build
   before_script:
   - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
@@ -30,7 +30,7 @@ build_backend:
     - docker push vps-da62cdaf.vps.ovh.net:8082/pfeblog/frontend:latest 
   only:
     changes:
-      - ./react/blogapi/*
+      - ./react/blogapi/**/*
   #   - dev
 
 deploy:
