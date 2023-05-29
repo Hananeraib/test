@@ -30,7 +30,7 @@ build_frontend:
     - docker push vps-da62cdaf.vps.ovh.net:8082/pfeblog/frontend:latest 
   rules:
     - changes:
-      - react/blogapi/*
+      - react/blogapi/src/App.js
   #   - dev
 
 deploy:
