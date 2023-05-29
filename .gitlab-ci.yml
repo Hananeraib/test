@@ -20,7 +20,18 @@ stages:
 #   script:
 #     - docker compose build
 #     - docker compose push
-
+build_backend:
+  stage: build
+  before_script:
+  - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
+  script:
+    - cd ./react/blogapi
+    - docker build -t vps-da62cdaf.vps.ovh.net:8082/pfeblog/frontend:latest .
+    - docker push vps-da62cdaf.vps.ovh.net:8082/pfeblog/frontend:latest 
+  only:
+    changes:
+      - ./react/blogapi/*
+  #   - dev
 
 deploy:
   stage: deploy
@@ -31,3 +42,4 @@ deploy:
     # - ansible-playbook copydockercompose.yml
     # - ansible-playbook production.play.yml
     - echo $(pwd)
+  when: manual
