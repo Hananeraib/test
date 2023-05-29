@@ -38,8 +38,8 @@ deploy:
   tags:
     - ansible
   script:
-    # - ansible --version
+    - ansible --version
     - ansible-playbook copydockercompose.yml
     - ansible-playbook production.play.yml
-    - echo $(pwd)
+    # - echo $(pwd)
   when: manual
