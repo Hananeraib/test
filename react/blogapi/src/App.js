@@ -40,7 +40,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<h1>The latest Posts</h1>
+			<h1>This is the latest Posts</h1>
 			<PostLoading isLoading={appState.loading} posts={appState.posts} />
 		</div>
 	);
