@@ -28,8 +28,8 @@ build_frontend:
     - cd ./react/blogapi
     - docker build -t vps-da62cdaf.vps.ovh.net:8082/pfeblog/frontend:latest .
     - docker push vps-da62cdaf.vps.ovh.net:8082/pfeblog/frontend:latest 
-  rules:
-    - changes:
+  only:
+    changes:
       - react/blogapi/**/* 
   #   - dev
 
