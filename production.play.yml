@@ -28,13 +28,13 @@
       pull: true
       state: present 
 
-  - name: build docker-compose 
-    community.docker.docker_compose: 
-      project_src: ./pfeblog/
-      files:
-      - docker-compose.prod.yml
-      build: true
-      state: present 
+  # - name: build docker-compose 
+  #   community.docker.docker_compose: 
+  #     project_src: ./pfeblog/
+  #     files:
+  #     - docker-compose.prod.yml
+  #     build: true
+  #     state: present 
 
   # - name: run docker-compose 
   #   community.docker.docker_compose: 
