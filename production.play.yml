@@ -11,7 +11,6 @@
       registry: vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
       username: gitlab
       password: Gitlab 2023
-      # reauthorize: true
 
   - name: docker-compose down 
     community.docker.docker_compose: 
@@ -28,17 +27,4 @@
       pull: true
       state: present 
 
-  # - name: build docker-compose 
-  #   community.docker.docker_compose: 
-  #     project_src: ./pfeblog/
-  #     files:
-  #     - docker-compose.prod.yml
-  #     build: true
-  #     state: present 
-
-  # - name: run docker-compose 
-  #   community.docker.docker_compose: 
-  #     project_src: ./pfeblog/
-  #     files:
-  #     - docker-compose.prod.yml
  

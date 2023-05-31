@@ -54,3 +54,4 @@ deploy:
     - ansible-playbook copydockercompose.yml
     - ansible-playbook production.play.yml
   when: manual
+  allow_failure: false  #To no skip the first stages and not run when there's a failure
