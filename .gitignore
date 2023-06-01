@@ -7,6 +7,9 @@
 #ignore docker guide file
 DockerCommand.txt
 
+#ignore build directory
+react\blogapi\build
+
 #ignore backup dump
 backup.sql
 backup.tar
