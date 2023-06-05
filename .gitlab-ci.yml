@@ -21,7 +21,7 @@ build_backend:
   script:
     - cd ./django
     - echo "hello"
-    - docker build -t $REGISTRY/backend:latest -t
+    - docker build -t $REGISTRY/backend:latest -t .
     - docker push $REGISTRY/backend:latest 
   rules:
     - if: $CI_COMMIT_BRANCH == "dev"
@@ -35,7 +35,7 @@ build_frontend:
   script:
     - cd ./react/blogapi
     - echo "hello"
-    - docker build -t $REGISTRY/frontend:latest
+    - docker build -t $REGISTRY/frontend:latest .
     - docker push $REGISTRY/frontend:latest 
   rules:
     - if: $CI_COMMIT_BRANCH == "dev"
