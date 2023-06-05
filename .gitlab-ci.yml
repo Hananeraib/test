@@ -19,7 +19,7 @@ build_backend:
   - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
   script:
     - cd ./django
-    - docker build -t vps-da62cdaf.vps.ovh.net:8082/pfeblog/backend:latest
+    - docker build -t vps-da62cdaf.vps.ovh.net:8082/pfeblog/backend:latest -t vps-da62cdaf.vps.ovh.net:8082/pfeblog/backend:$CI_COMMIT_TAG
     - docker push vps-da62cdaf.vps.ovh.net:8082/pfeblog/backend:latest 
   rules:
     - if: $CI_COMMIT_BRANCH == "dev"
@@ -32,7 +32,7 @@ build_frontend:
   - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
   script:
     - cd ./react/blogapi
-    - docker build -t vps-da62cdaf.vps.ovh.net:8082/pfeblog/frontend:latest .
+    - docker build -t vps-da62cdaf.vps.ovh.net:8082/pfeblog/frontend:latest -t vps-da62cdaf.vps.ovh.net:8082/pfeblog/frontend:$CI_COMMIT_TAG 
     - docker push vps-da62cdaf.vps.ovh.net:8082/pfeblog/frontend:latest 
   rules:
     - if: $CI_COMMIT_BRANCH == "dev"
