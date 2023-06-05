@@ -29,9 +29,9 @@ build_backend:
     - docker build -t vps-da62cdaf.vps.ovh.net:8082/pfeblog/backend:latest
     - docker push vps-da62cdaf.vps.ovh.net:8082/pfeblog/backend:latest 
   rules:
-    - changes:
-      - django/**/* 
     - if: $CI_COMMIT_BRANCH == "dev"
+      changes:
+        - django/**/* 
 
 build_frontend:
   stage: build
@@ -42,9 +42,9 @@ build_frontend:
     - docker build -t vps-da62cdaf.vps.ovh.net:8082/pfeblog/frontend:latest .
     - docker push vps-da62cdaf.vps.ovh.net:8082/pfeblog/frontend:latest 
   rules:
-    - changes:
-      - react/blogapi/**/* 
     - if: $CI_COMMIT_BRANCH == "dev"
+      changes:
+        - react/blogapi/**/* 
 
 deploy:
   stage: deploy
