@@ -31,8 +31,7 @@ build_backend:
   rules:
     - changes:
       - django/**/* 
-  only:
-    - dev
+    - if: $CI_COMMIT_BRANCH == "dev"
 
 build_frontend:
   stage: build
@@ -45,9 +44,7 @@ build_frontend:
   rules:
     - changes:
       - react/blogapi/**/* 
-  only:
-    - dev
-
+    - if: $CI_COMMIT_BRANCH == "dev"
 
 deploy:
   stage: deploy
