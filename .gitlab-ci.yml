@@ -31,6 +31,7 @@ build_backend:
   rules:
     - changes:
       - django/**/* 
+    - dev
 
 build_frontend:
   stage: build
@@ -43,6 +44,7 @@ build_frontend:
   rules:
     - changes:
       - react/blogapi/**/* 
+    - dev
 
 
 deploy:
@@ -55,3 +57,5 @@ deploy:
     - ansible-playbook production.play.yml
   when: manual
   allow_failure: false  #To no skip the first stages and not run when there's a failure
+  only:
+    - dev
