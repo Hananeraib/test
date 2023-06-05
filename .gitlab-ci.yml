@@ -31,6 +31,7 @@ build_backend:
   rules:
     - changes:
       - django/**/* 
+  only:
     - dev
 
 build_frontend:
@@ -44,6 +45,7 @@ build_frontend:
   rules:
     - changes:
       - react/blogapi/**/* 
+  only:
     - dev
 
 
