@@ -35,7 +35,6 @@ function App() {
 	//   }, []);
 
 
-
 	return (
 		<div className="App">
 			<h1>Latest Posts</h1>
