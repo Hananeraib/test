@@ -5,6 +5,7 @@ variables:
   REGISTRY: "vps-da62cdaf.vps.ovh.net:8082/pfeblog"
 services:
   - name: docker:dind
+    alias: docker
     #Add our registry to insecure registry group
     command: ["--insecure-registry=vps-da62cdaf.vps.ovh.net:8082"]
 default:
