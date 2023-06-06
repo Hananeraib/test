@@ -22,6 +22,7 @@ function App() {
 			});
 	}, [setAppState]);
 
+	
 	// useEffect(() => {
 	// 	setAppState({ loading: true });
 	// 	getPosts()
@@ -34,7 +35,7 @@ function App() {
 	// 	  });
 	//   }, []);
 
-	
+
 	return (
 		<div className="App">
 			<h1>Latest Posts</h1>

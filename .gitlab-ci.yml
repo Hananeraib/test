@@ -9,7 +9,7 @@ services:
     command: ["--insecure-registry=vps-da62cdaf.vps.ovh.net:8082"]
 default:
   tags:
-    - docker-shell
+    - docker-simple
 
 stages:
   - build
