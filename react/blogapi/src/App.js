@@ -24,7 +24,6 @@ function App() {
 
 	// useEffect(() => {
 	// 	setAppState({ loading: true });
-	
 	// 	getPosts()
 	// 	  .then(posts => {
 	// 		setAppState({ loading: false, posts });
