@@ -23,6 +23,7 @@ function App() {
 	}, [setAppState]);
 
 	
+
 	// useEffect(() => {
 	// 	setAppState({ loading: true });
 	// 	getPosts()
