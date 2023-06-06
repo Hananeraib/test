@@ -11,7 +11,6 @@ function App() {
 		posts: null,
 	});
 
-	
 	useEffect(() => {
 		setAppState({ loading: true });
 		const apiUrl = `http://vps-d2235e42.vps.ovh.net:8080/api/`;
