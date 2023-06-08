@@ -21,7 +21,6 @@ function App() {
 			});
 	}, [setAppState]);
 
-
 	// useEffect(() => {
 	// 	setAppState({ loading: true });
 	// 	getPosts()
@@ -33,7 +32,6 @@ function App() {
 	// 		setAppState({ loading: false, posts: null });
 	// 	  });
 	//   }, []);
-
 
 	return (
 		<div className="App">

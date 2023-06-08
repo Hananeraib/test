@@ -1,7 +1,8 @@
 image: docker:20.10.16
 variables:
   DOCKER_TLS_CERTDIR: ""
-  REGISTRY: "vps-da62cdaf.vps.ovh.net:8082/pfeblog"
+  REGISTRY: "vps-da62cdaf.vps.ovh.net:8082"
+  REPOSITORY: "pfeblog"
 services:
   - name: docker:dind
     #Add our registry to insecure registry group
@@ -17,12 +18,12 @@ stages:
 build_backend:
   stage: build
   before_script:
-  - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
+  - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" $REGISTRY/artifactory/$REPOSITORY/
   script:
     - cd ./django
     - echo "hello"
-    - docker build -t $REGISTRY/backend:latest .
-    - docker push $REGISTRY/backend:latest 
+    - docker build -t $REGISTRY/$REPOSITORY/backend:latest .
+    - docker push $REGISTRY/$REPOSITORY/backend:latest 
   rules:
     - if: $CI_COMMIT_BRANCH == "dev"
       changes:
@@ -32,12 +33,12 @@ build_frontend:
   stage: build
   before_script:
   - docker ps -a
-  - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
+  - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" $REGISTRY/artifactory/$REPOSITORY/
   script:
     - cd ./react/blogapi
     - echo "hello"
-    - docker build -t $REGISTRY/frontend:latest .
-    - docker push $REGISTRY/frontend:latest 
+    - docker build -t $REGISTRY/$REPOSITORY/frontend:latest .
+    - docker push $REGISTRY/$REPOSITORY/frontend:latest 
   rules:
     - if: $CI_COMMIT_BRANCH == "dev"
       changes:
