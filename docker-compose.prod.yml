@@ -1,32 +1,6 @@
 version: '3.9'
 
 services:
-  # backend:
-  #   build:
-  #     context: ./django
-  #   image: backend
-  #   container_name: backend
-  #   hostname: backend
-  #   # tty: true
-  #   networks:
-  #     - web
-  #     - backend
-  #   ports:
-  #     - "8000:8000"
-  #   depends_on:
-  #     - database
-  # frontend:
-  #   build:
-  #     context: ./react/blogapi
-  #   container_name: frontend
-  #   hostname: frontend
-  #   image: frontend
-  #   networks:
-  #     - web
-  #   ports:
-  #     - 3000:3000
-  #   depends_on:
-  #     - backend
   database:
     image: postgres:13.9
     environment:

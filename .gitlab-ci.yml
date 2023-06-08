@@ -21,7 +21,7 @@ build_backend:
   script:
     - cd ./django
     - echo "hello"
-    - docker build -t $REGISTRY/backend:latest -t .
+    - docker build -t $REGISTRY/backend:latest .
     - docker push $REGISTRY/backend:latest 
   rules:
     - if: $CI_COMMIT_BRANCH == "dev"
