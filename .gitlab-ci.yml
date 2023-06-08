@@ -4,7 +4,7 @@ variables:
   REGISTRY: "vps-da62cdaf.vps.ovh.net:8082"
   REPOSITORY: "pfeblog"
 services:
-  - name: docker:dind
+  - name: docker:20.10.16-dind
     #Add our registry to insecure registry group
     command: ["--insecure-registry=vps-da62cdaf.vps.ovh.net:8082"]
 default:
@@ -35,9 +35,10 @@ build_frontend:
   - docker ps -a
   - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" $REGISTRY/artifactory/$REPOSITORY/
   script:
+    - docker pull $REGISTRY/$REPOSITORY/frontend:latest || true
     - cd ./react/blogapi
     - echo "hello"
-    - docker build -t $REGISTRY/$REPOSITORY/frontend:latest .
+    - docker build --cache-from $REGISTRY/$REPOSITORY/frontend:latest -t $REGISTRY/$REPOSITORY/frontend:latest .
     - docker push $REGISTRY/$REPOSITORY/frontend:latest 
   rules:
     - if: $CI_COMMIT_BRANCH == "dev"
