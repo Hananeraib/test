@@ -32,7 +32,6 @@ function App() {
 	// 		setAppState({ loading: false, posts: null });
 	// 	  });
 	//   }, []);
-	
 	return (
 		<div className="App">
 			<h1>Latest Posts</h1>
