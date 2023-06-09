@@ -9,6 +9,7 @@ services:
     command: ["--insecure-registry=vps-da62cdaf.vps.ovh.net:8082"]
 default:
   tags:
+    #ASSIGN THE JOBs BY DEFAULT TO DOCKER RUNNER
     - docker
 
 stages:
@@ -19,31 +20,46 @@ build_backend:
   stage: build
   before_script:
   - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" $REGISTRY/artifactory/$REPOSITORY/
+    # LOGIN TO OUR JFROG REGISTRY
   script:
+    - docker pull $REGISTRY/$REPOSITORY/backend:latest || true
+      # PULL THE LATEST VERSION OF BACKEND IMAGE TO USE IT AS CACHED IMAGE
+      # THE "true" BOOL WITH "||" OPERATOR ALLOW THE JOB CONTINUE IN CASE
+      # THE BACKEND IMAGE IS NOT YET STORED IN THE REPOSITORY 
     - cd ./django
-    - echo "hello"
-    - docker build -t $REGISTRY/$REPOSITORY/backend:latest .
+    - docker --cache-from $REGISTRY/$REPOSITORY/backend:latest build -t $REGISTRY/$REPOSITORY/backend:latest .
+      # "--cache-from" ALLOW THE BUILD ACTION TO REUSE THE CACHE FROM THE
+      # PULLED IMAGE 
     - docker push $REGISTRY/$REPOSITORY/backend:latest 
   rules:
     - if: $CI_COMMIT_BRANCH == "dev"
+      # TO KEEP THE PIPELINE EXECUTABLE ONLY FOR THE "dev" BRANCH
       changes:
         - django/**/* 
+        # TRIGGER THE JOB ONLY WHEN THERE'S MODIFICATION ON THE
+        # BACKEND FILES
 
 build_frontend:
   stage: build
   before_script:
-  - docker ps -a
   - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" $REGISTRY/artifactory/$REPOSITORY/
   script:
     - docker pull $REGISTRY/$REPOSITORY/frontend:latest || true
+      # PULL THE LATEST VERSION OF FRONTEND IMAGE TO USE IT AS CACHED IMAGE
+      # THE "true" BOOL WITH "||" OPERATOR ALLOW THE JOB CONTINUE IN CASE
+      # THE FROTNED IMAGE IS NOT YET STORED IN THE REPOSITORY 
     - cd ./react/blogapi
-    - echo "hello"
     - docker build --cache-from $REGISTRY/$REPOSITORY/frontend:latest -t $REGISTRY/$REPOSITORY/frontend:latest .
+      # "--cache-from" ALLOW THE BUILD ACTION TO REUSE THE CACHE FROM THE
+      # PULLED IMAGE 
     - docker push $REGISTRY/$REPOSITORY/frontend:latest 
   rules:
     - if: $CI_COMMIT_BRANCH == "dev"
+      # TO KEEP THE PIPELINE EXECUTABLE ONLY FOR THE "dev" BRANCH
       changes:
         - react/blogapi/**/* 
+        # TRIGGER THE JOB ONLY WHEN THERE'S MODIFICATION ON THE
+        # FRONTEND FILES
 
 deploy:
   stage: deploy
@@ -52,8 +68,16 @@ deploy:
   script:
     - ansible --version
     - ansible-playbook copydockercompose.yml
+      # COPY THE DOCKER COMPOSE FILE USED FOR PRODUCTION INTO THE NEW
+      # PRODUCTION MACHINES
     - ansible-playbook production.play.yml
+      # RUN THE COPIED DOCKER COMPOSE FILE ON ALL PRODUCTION MACHINES
+
   when: manual
-  allow_failure: false  #To no skip the first stages and not run when there's a failure
+  allow_failure: false  
+  # TO NOT SKIP THE PREVIOUS STAGES (build)
+  # & TO NOT ALLOW THE JUB TO BE RUNNED WHEN THERE'S FAILURE BEFORE
   only:
     - dev
+      # AT THIS STAGES OF THE CONCEPTION OF CI CD PIPELINE
+      # WE WILL USE RIGHT-NOW JUST THE "dev" BRANCH
