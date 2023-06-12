@@ -1,16 +1,24 @@
+  # THE COPY TASK IS DONE ONLY FOR NEWEST HOST ADDED TO OUR HOST FILE
 - hosts: new_host 
+  # GIVE THE PRIVILEGED PERMISSION TO ANSIBLE
   become: yes 
+  # TO NOT COLLECT & DEBUG USELESS DATA (optimize time)
   gather_facts: no 
 
   vars: 
+    # DEFINE THE PYTHON INTERPRETER FOLDER IN THE CONTROLLER NODE
     ansible_python_interpreter: /usr/bin/python3 
 
   tasks: 
   - name: copy docker-compose.yml 
+    # USING COPY BUILTIN ANSIBLE's MODULE
     copy: 
-      src: ./docker-compose.prod.yml 
+      # THE SRC FILE WE WILL COPY IT
+      src: ./docker-compose.prod.yml
+      # THE DESTINATION FOLDER WHERE TO COPY 
       dest: ./pfeblog/
 
+  # THE SAME TASK FOR NGINX CONFIGURATION (FOLDER) 
   - name: copy nginx conf
     copy: 
       src: nginx
