@@ -2,7 +2,7 @@
 
 ---
 
-![Home Page](README\webhome.png "Web App - Home Page")
+![Home Page](webhome.png "Web App - Home Page")
 
 This is my End-of-studies project. It consist to design and to implement a CI CD pipeline from the scratch to the end.
 
