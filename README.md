@@ -4,9 +4,9 @@
 
 ![Home Page](./README/webhome.png "Web App - Home Page")
 
-This is my End-of-studies project.  It consist to design and to implement a CI CD pipeline from the scratch to the end.
+This is my End-of-studies project. It consist to design and to implement a CI CD pipeline from the scratch to the end.
 
-We use for this project an+ application published in GitHub by ***veryacademy*** with the followed spec :
+We use for this project an application published in GitHub by ***veryacademy*** with the followed spec :
 
 <div align="center">
 
