@@ -32,7 +32,7 @@ services:
     networks:
       - web
     ports:
-      - 3000:3000
+      - 3030:3030
     depends_on:
       - backend
   reverse-proxy:
@@ -41,11 +41,12 @@ services:
     volumes:
       - ./nginx/nginx_default.conf:/etc/nginx/nginx.conf
     ports:
-      - "8080:8080"
+      - "80:8080"
     networks:
       - web
     depends_on:
       - backend
+      - frontend
 
 volumes:
   postgres:
