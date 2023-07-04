@@ -1,5 +1,5 @@
   # THE APPLY TASKS ON THE PRODUCTION HOSTS
-- hosts: manger 
+- hosts: manager 
   # GIVE THE PRIVILEGED PERMISSION TO ANSIBLE
   become: yes 
   # TO NOT COLLECT & DEBUG USELESS DATA (optimize time)
