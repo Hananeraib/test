@@ -1,0 +1,45 @@
+  # THE APPLY TASKS ON THE PRODUCTION HOSTS
+- hosts: manger 
+  # GIVE THE PRIVILEGED PERMISSION TO ANSIBLE
+  become: yes 
+  # TO NOT COLLECT & DEBUG USELESS DATA (optimize time)
+  gather_facts: no 
+
+  vars: 
+    # DEFINE THE PYTHON INTERPRETER FOLDER IN THE CONTROLLER NODE
+    ansible_python_interpreter: /usr/bin/python3 
+
+  tasks: 
+  - name: log to private registry
+    # USINGE DOCKER LOGIN SSh-CMD from "community.docker" MODULE
+    # Login to our private registry
+    docker_login:
+      registry: vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
+      ###################################################
+      # THIS DATA MUST BE HIDDEN BY USING ANSIBLE VAULT #
+      username: gitlab
+      password: Gitlab 2023
+      ###################################################
+  
+  - name: deploy a stack
+    docker_stack:
+      state: present
+      name: pfeblog
+      compose:
+        - /home/centos/pfeblog/docker-compose.prod.yml
+      with_registry_auth: yes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -15,9 +15,12 @@ services:
       - 5432:5432
   backend:
     image: vps-da62cdaf.vps.ovh.net:8082/pfeblog/backend:latest
-    container_name: backend
     hostname: backend
-    # tty: true
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
     networks:
       - web
       - backend
@@ -27,7 +30,6 @@ services:
       - database
   frontend:
     image: vps-da62cdaf.vps.ovh.net:8082/pfeblog/frontend:latest
-    container_name: frontend
     hostname: frontend
     networks:
       - web
@@ -37,7 +39,6 @@ services:
       - backend
   reverse-proxy:
     image: nginx:latest
-    container_name: reverse-proxy
     volumes:
       - ./nginx/nginx_default.conf:/etc/nginx/nginx.conf
     ports:
