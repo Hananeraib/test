@@ -13,13 +13,13 @@
   - name: log to private registry
     # USINGE DOCKER LOGIN SSh-CMD from "community.docker" MODULE
     # Login to our private registry
-    docker_login:
-      registry: vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
-      ###################################################
-      # THIS DATA MUST BE HIDDEN BY USING ANSIBLE VAULT #
-      username: gitlab
-      password: Gitlab 2023
-      ###################################################
+    # docker_login:
+    #   registry: vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
+    #   ###################################################
+    #   # THIS DATA MUST BE HIDDEN BY USING ANSIBLE VAULT #
+    #   username: gitlab
+    #   password: Gitlab 2023
+    #   ###################################################
 
 
 
@@ -27,9 +27,9 @@
     ansible.builtin.include_vars:
       file: password.yml
 
-  - name: Debug
+  - name: print variab le
     ansible.builtin.debug:
-      msg: vault_message
+      var: vaultmessage
 
 
 
