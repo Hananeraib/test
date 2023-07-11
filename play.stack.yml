@@ -10,7 +10,7 @@
     ansible_python_interpreter: /usr/bin/python3 
 
   tasks: 
-  - name: log to private registry
+  # - name: log to private registry
     # USINGE DOCKER LOGIN SSh-CMD from "community.docker" MODULE
     # Login to our private registry
     # docker_login:
