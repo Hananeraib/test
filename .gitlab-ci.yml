@@ -77,7 +77,7 @@ deploy:
   allow_failure: false  
   # TO NOT SKIP THE PREVIOUS STAGES (build)
   # & TO NOT ALLOW THE JUB TO BE RUNNED WHEN THERE'S FAILURE BEFORE
-  only:
-    - dev
+  # only:
+  #   - dev
       # AT THIS STAGES OF THE CONCEPTION OF CI CD PIPELINE
       # WE WILL USE RIGHT-NOW JUST THE "dev" BRANCH
