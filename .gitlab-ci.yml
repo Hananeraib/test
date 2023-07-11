@@ -70,7 +70,7 @@ deploy:
       # COPY THE DOCKER COMPOSE FILE USED FOR PRODUCTION INTO THE NEW
       # PRODUCTION MACHINES
     - ansible-playbook --ask-vault-pass play.stack.yml
-    - "pwd"
+    - echo pwd
       # RUN THE COPIED DOCKER COMPOSE FILE ON ALL PRODUCTION MACHINES
 
   when: manual
