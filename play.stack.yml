@@ -15,18 +15,12 @@
       file: vault.yml
 
   - name: log to private registry
-    # USINGE DOCKER LOGIN SSh-CMD from "community.docker" MODULE
-    # Login to our private registry
+    # USINGE DOCKER LOGIN SSH-CMD FROM "community.docker" MODULE
+    # LOGIN TO OUR PRIVATE IMAGE REGISTRY (JFROG)
     docker_login:
       registry: vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
-      # ###################################################
-      # # THIS DATA MUST BE HIDDEN BY USING ANSIBLE VAULT #
-      # username: gitlab
-      # password: Gitlab 2023
-      # ###################################################
-
       username: "{{registry_usr}}"
-      password: Gitlab 2023
+      password: "{{registry_pwd}}"
 
 
 
