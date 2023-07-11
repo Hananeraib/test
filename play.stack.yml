@@ -25,7 +25,7 @@
       # password: Gitlab 2023
       # ###################################################
 
-      username: {{registry_usr}}
+      username: "{{registry_usr}}"
       password: Gitlab 2023
 
 
