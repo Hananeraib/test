@@ -22,16 +22,9 @@
       username: "{{registry_usr}}"
       password: "{{registry_pwd}}"
 
-
-
-
-  # - name: print variab le
-  #   ansible.builtin.debug:
-  #     var: vaultmessage
-
-
-
   - name: deploy a stack
+    # USING DOCKER STACK MODULE TO RUN A DOCKER COMPOSE AS A DOCKER STACK
+    # FOR DOCKER SWARM
     docker_stack:
       state: present
       name: pfeblog
