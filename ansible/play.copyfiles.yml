@@ -14,12 +14,12 @@
     # USING COPY BUILTIN ANSIBLE's MODULE
     copy: 
       # THE SRC FILE WE WILL COPY IT
-      src: ./ansible/docker-compose.prod.yml
+      src: ./../docker-compose.prod.yml
       # THE DESTINATION FOLDER WHERE TO COPY 
       dest: ./pfeblog/
 
   # THE SAME TASK FOR NGINX CONFIGURATION (FOLDER) 
   - name: copy nginx conf
     copy: 
-      src: ./ansible/nginx
+      src: ./../nginx
       dest: ./pfeblog
