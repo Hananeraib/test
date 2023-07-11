@@ -10,37 +10,36 @@
     ansible_python_interpreter: /usr/bin/python3 
 
   tasks: 
-  # - name: log to private registry
+  - name: log to private registry
     # USINGE DOCKER LOGIN SSh-CMD from "community.docker" MODULE
     # Login to our private registry
-    # docker_login:
-    #   registry: vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
-    #   ###################################################
-    #   # THIS DATA MUST BE HIDDEN BY USING ANSIBLE VAULT #
-    #   username: gitlab
-    #   password: Gitlab 2023
-    #   ###################################################
+    docker_login:
+      registry: vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
+      ###################################################
+      # THIS DATA MUST BE HIDDEN BY USING ANSIBLE VAULT #
+      username: gitlab
+      password: Gitlab 2023
+      ###################################################
 
 
 
-  - name: include vault
-    ansible.builtin.include_vars:
-      file: password.yml
+  # - name: include vault
+  #   ansible.builtin.include_vars:
+  #     file: password.yml
 
-  - name: print variab le
-    ansible.builtin.debug:
-      var: vaultmessage
+  # - name: print variab le
+  #   ansible.builtin.debug:
+  #     var: vaultmessage
 
 
 
-# COMMENTED FOR TEST PHASE
-  # - name: deploy a stack
-  #   docker_stack:
-  #     state: present
-  #     name: pfeblog
-  #     compose:
-  #       - /home/centos/pfeblog/docker-compose.prod.yml
-  #     with_registry_auth: yes
+  - name: deploy a stack
+    docker_stack:
+      state: present
+      name: pfeblog
+      compose:
+        - /home/centos/pfeblog/docker-compose.prod.yml
+      with_registry_auth: yes
 
 
 

@@ -66,13 +66,13 @@ deploy:
   tags:
     - ansible
   script:
-    # - ansible-playbook play.copyfiles.yml
+    - ansible-playbook play.copyfiles.yml
       # COPY THE DOCKER COMPOSE FILE USED FOR PRODUCTION INTO THE NEW
       # PRODUCTION MACHINES
     - ansible-playbook --vault-password-file $VAULT_KEY play.stack.yml
       # RUN THE COPIED DOCKER COMPOSE FILE ON ALL PRODUCTION MACHINES
 
-  # when: manual
+  when: manual
   allow_failure: false  
   # TO NOT SKIP THE PREVIOUS STAGES (build)
   # & TO NOT ALLOW THE JUB TO BE RUNNED WHEN THERE'S FAILURE BEFORE
