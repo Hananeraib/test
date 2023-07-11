@@ -69,7 +69,8 @@ deploy:
     # - ansible-playbook play.copyfiles.yml
       # COPY THE DOCKER COMPOSE FILE USED FOR PRODUCTION INTO THE NEW
       # PRODUCTION MACHINES
-    - ansible-playbook --vault-password-file filepwd play.stack.yml
+    - ansible-playbook --ask-vault-pass filepwd play.stack.yml
+    - pwd
       # RUN THE COPIED DOCKER COMPOSE FILE ON ALL PRODUCTION MACHINES
 
   when: manual
