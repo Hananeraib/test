@@ -69,15 +69,14 @@ deploy:
     # - ansible-playbook play.copyfiles.yml
       # COPY THE DOCKER COMPOSE FILE USED FOR PRODUCTION INTO THE NEW
       # PRODUCTION MACHINES
-    - ansible-playbook --ask-vault-pass play.stack.yml
-    - echo pwd
+    - ansible-playbook --vault-password-file /home/centos/ansible-pass play.stack.yml
       # RUN THE COPIED DOCKER COMPOSE FILE ON ALL PRODUCTION MACHINES
 
-  when: manual
+  # when: manual
   allow_failure: false  
   # TO NOT SKIP THE PREVIOUS STAGES (build)
   # & TO NOT ALLOW THE JUB TO BE RUNNED WHEN THERE'S FAILURE BEFORE
-  # only:
-  #   - dev
+  only:
+    - dev
       # AT THIS STAGES OF THE CONCEPTION OF CI CD PIPELINE
       # WE WILL USE RIGHT-NOW JUST THE "dev" BRANCH
