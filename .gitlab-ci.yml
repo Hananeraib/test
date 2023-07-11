@@ -66,10 +66,10 @@ deploy:
   tags:
     - ansible
   script:
-    - ansible-playbook play.copyfiles.yml
+    # - ansible-playbook play.copyfiles.yml
       # COPY THE DOCKER COMPOSE FILE USED FOR PRODUCTION INTO THE NEW
       # PRODUCTION MACHINES
-    - ansible-playbook play.stack.yml
+    - ansible-playbook --vault-password-file filepwd play.stack.yml
       # RUN THE COPIED DOCKER COMPOSE FILE ON ALL PRODUCTION MACHINES
 
   when: manual

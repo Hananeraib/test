@@ -20,14 +20,27 @@
       username: gitlab
       password: Gitlab 2023
       ###################################################
-  
-  - name: deploy a stack
-    docker_stack:
-      state: present
-      name: pfeblog
-      compose:
-        - /home/centos/pfeblog/docker-compose.prod.yml
-      with_registry_auth: yes
+
+
+
+  - name: include vault
+    ansible.builtin.include_vars:
+      file: password.yml
+
+  - name: Debug
+    ansible.builtin.debug:
+      msg: vault_message
+
+
+
+# COMMENTED FOR TEST PHASE
+  # - name: deploy a stack
+  #   docker_stack:
+  #     state: present
+  #     name: pfeblog
+  #     compose:
+  #       - /home/centos/pfeblog/docker-compose.prod.yml
+  #     with_registry_auth: yes
 
 
 
