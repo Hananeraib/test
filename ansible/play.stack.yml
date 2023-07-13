@@ -1,4 +1,8 @@
-  # THE APPLY (docker swarm) TASKS ON THE PRODUCTION HOSTS
+  # THIS PLAYBOOK COMMANDS THE DOCKER SWARM MANAGER NODE TO APPLY
+  # THE STACK FILE ("docker-compose.prod.yml") COPIED BY THE 
+  # "play.copyfiles.yml" PLAYBOOK ON THE WORKER NODES
+  ### ---
+  # THE EXECUTION OF THIS PLAYBOOK REQUIRES 
 - hosts: manager 
   # GIVE THE PRIVILEGED PERMISSION TO ANSIBLE
   become: yes 
@@ -6,10 +10,12 @@
   gather_facts: no 
 
   vars: 
-    # DEFINE THE PYTHON INTERPRETER FOLDER IN THE CONTROLLER NODE
+    # DEFINE THE PYTHON INTERPRETER FOLDER IN THE CONTROLLER NODE OF ANSIBLE
     ansible_python_interpreter: /usr/bin/python3 
 
   tasks: 
+    # THIS TASK DECRYPTS AND LOADS VARIABLES THAT ARE STORED IN VAULT FILE
+    # THE VAULT FILE IS CALLED "vault.yml" WE MENTIONNED IT BY THE ATTRIBUT "file" 
   - name: include vault
     ansible.builtin.include_vars:
       file: vault.yml
@@ -24,7 +30,7 @@
 
   - name: deploy a stack
     # USING DOCKER STACK MODULE TO RUN A DOCKER COMPOSE AS A DOCKER STACK
-    # FOR DOCKER SWARM
+    # FOR DOCKER SWARM CLUSTER
     docker_stack:
       state: present
       name: pfeblog
