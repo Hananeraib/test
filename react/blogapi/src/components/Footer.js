@@ -28,7 +28,7 @@ function Copyright() {
 			</Link>{' '}
 			{new Date().getFullYear()}
 			{'.'}
-			 -Modified by <em>Haitam Elkadiri</em>
+			 -Modified by <em>SII MAROC</em>
 		</Typography>
 	);
 }
