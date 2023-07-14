@@ -27,7 +27,7 @@ build_backend:
       # THE "true" BOOL WITH "||" OPERATOR ALLOW THE JOB CONTINUE IN CASE
       # THE BACKEND IMAGE IS NOT YET STORED IN THE REPOSITORY 
     - cd ./django
-    - docker --cache-from $REGISTRY/$REPOSITORY/backend:latest build -t $REGISTRY/$REPOSITORY/backend:latest .
+    - docker build --cache-from $REGISTRY/$REPOSITORY/backend:latest -t $REGISTRY/$REPOSITORY/backend:latest .
       # "--cache-from" ALLOW THE BUILD ACTION TO REUSE THE CACHE FROM THE
       # PULLED IMAGE 
     - docker push $REGISTRY/$REPOSITORY/backend:latest 
