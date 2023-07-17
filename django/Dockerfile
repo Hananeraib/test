@@ -6,14 +6,13 @@ ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 
 WORKDIR /django
-############################
 COPY requirements.txt ./
+############################
 RUN pip install --upgrade pip
 # Installing required dependencies for PSYCOPG2 
 RUN apk update && \
     apk add musl-dev python3-dev postgresql-dev gcc
 ############################
-# RUN pip install psycopg2-binary 
 RUN pip install -r requirements.txt
 
 COPY . .
