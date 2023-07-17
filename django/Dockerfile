@@ -9,7 +9,7 @@ WORKDIR /django
 ############################
 COPY requirements.txt ./
 RUN pip install --upgrade pip
-RUN pip install psycopg2-binary 
+# RUN pip install psycopg2-binary 
 RUN pip install -r requirements.txt
 # Installing required dependencies for PSYCOPG2 
 # RUN apk update && \
