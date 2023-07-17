@@ -6,15 +6,17 @@ ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 
 WORKDIR /django
-COPY . .
 ############################
+COPY requirements.txt ./
+RUN pip install --upgrade pip
+RUN pip3 install -r requirements.txt
 # Installing required dependencies for PSYCOPG2 
 RUN apk update && \
     apk add musl-dev python3-dev postgresql-dev gcc
 ############################
-RUN pip install --upgrade pip
 ##############################
-RUN pip3 install -r requirements.txt
+
+COPY . .
 
 # Run custom command to create superuser
 # RUN python manage.py createsuperuser

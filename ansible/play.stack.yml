@@ -33,6 +33,7 @@
     # FOR DOCKER SWARM CLUSTER
     docker_stack:
       state: present
+      # GIVE THE SWARM STACK A NAME ("pfeblog")
       name: pfeblog
       compose:
         - /home/centos/pfeblog/docker-compose.prod.yml
