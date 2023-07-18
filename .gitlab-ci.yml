@@ -1,8 +1,9 @@
 # image: docker:20.10.16
 image:
   name: docker:20.10.16-dind
-  entrypoint: ["--insecure-registry","vps-da62cdaf.vps.ovh.net:8082"]
+  # entrypoint: ["--insecure-registry","vps-da62cdaf.vps.ovh.net:8082"]
 variables:
+  DOCKER_OPTS: "--insecure-registry=vps-da62cdaf.vps.ovh.net:8082"
   DOCKER_TLS_CERTDIR: ""
   REGISTRY: "vps-da62cdaf.vps.ovh.net:8082"
   REPOSITORY: "pfeblog"
