@@ -1,6 +1,6 @@
 image: docker:20.10.16
 variables:
-  DOCKER_TLS_CERTDIR: ""
+  # DOCKER_TLS_CERTDIR: ""
   REGISTRY: "vps-da62cdaf.vps.ovh.net:8082"
   REPOSITORY: "pfeblog"
 services:
