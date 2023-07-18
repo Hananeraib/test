@@ -18,6 +18,7 @@
     # THE VAULT FILE IS CALLED "vault.yml" WE MENTIONNED IT BY THE ATTRIBUT "file" 
   - name: include vault
     ansible.builtin.include_vars:
+      # DEFINE THE VAULT FILE ("vault.yml")
       file: vault.yml
 
   - name: log to private registry
@@ -25,31 +26,25 @@
     # LOGIN TO OUR PRIVATE IMAGE REGISTRY (JFROG)
     docker_login:
       registry: vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
+      # CALLING FOR THE VAR "registry_usr" STORED IN THE VAULT FILE TO
+      # USE IT AS AUTH FOR REGISTRY
       username: "{{registry_usr}}"
+      # CALLING FOR THE VAR "registry_pwd" STORED IN THE VAULT FILE TO
+      # USE IT AS AUTH FOR REGISTRY
       password: "{{registry_pwd}}"
 
   - name: deploy a stack
     # USING DOCKER STACK MODULE TO RUN A DOCKER COMPOSE AS A DOCKER STACK
     # FOR DOCKER SWARM CLUSTER
     docker_stack:
+      # TELL THE MANAGER NODE TO DEPLOY THE STACK ON THE CLUSTER BASED
+      # ON WHAT CONTAIN THE FILE "docker-compose.prod.yml" AS RULES OF 
+      # DEPLOYMENT
       state: present
       # GIVE THE SWARM STACK A NAME ("pfeblog")
       name: pfeblog
+      # DEFINE THE SWARM's STACK FILE (THE DOCKER COMPOSE FILE)
       compose:
         - /home/centos/pfeblog/docker-compose.prod.yml
+      # SEND AUTHENTICATION DETAILS TO SWARM AGENTS
       with_registry_auth: yes
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
