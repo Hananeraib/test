@@ -15,7 +15,6 @@ RUN apk update && \
 ############################
 RUN pip install -r requirements.txt
 
-
 COPY . .
 
 # Run custom command to create superuser

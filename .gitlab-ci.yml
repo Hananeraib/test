@@ -1,12 +1,15 @@
-image: docker:20.10.16
+# image: docker:20.10.16
+image:
+  name: docker:20.10.16-dind
+  entrypoint: ["--insecure-registry","vps-da62cdaf.vps.ovh.net:8082"]
 variables:
   DOCKER_TLS_CERTDIR: ""
   REGISTRY: "vps-da62cdaf.vps.ovh.net:8082"
   REPOSITORY: "pfeblog"
-services:
-  - name: docker:20.10.16-dind
-    #Add our registry to insecure registry group
-    command: ["--insecure-registry=vps-da62cdaf.vps.ovh.net:8082"]
+# services:
+#   - name: docker:20.10.16-dind
+#     #Add our registry to insecure registry group
+#     command: ["--insecure-registry=vps-da62cdaf.vps.ovh.net:8082"]
 default:
   tags:
     #ASSIGN THE JOBs BY DEFAULT TO DOCKER RUNNER
