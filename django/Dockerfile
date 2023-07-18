@@ -14,7 +14,6 @@ RUN apk update && \
     apk add musl-dev python3-dev postgresql-dev gcc
 ############################
 RUN pip install -r requirements.txt
-
 COPY . .
 
 # Run custom command to create superuser
