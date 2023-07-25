@@ -10,3 +10,4 @@ EXPOSE 3030
 RUN npm run build
 CMD [ "serve", "-l", "3030", "-s", "build" ]
 # CMD ["npm", "start"]
+
