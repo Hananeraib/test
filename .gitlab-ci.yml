@@ -69,8 +69,6 @@ build_frontend:
 
 test_build_tag:
   stage: test
-  tags:
-    - ansible
   before_script:
   - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" $REGISTRY/artifactory/$REPOSITORY/
   script:
