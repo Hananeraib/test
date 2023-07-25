@@ -25,6 +25,7 @@ test_build_backend:
   # - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" $REGISTRY/artifactory/$REPOSITORY/
   script:
     - ls
+    - docker ps -a
     # - docker pull $REGISTRY/$REPOSITORY/backend:latest || true
     # - cd ./django
     # - docker build --cache-from $REGISTRY/$REPOSITORY/backend:latest -t $REGISTRY/$REPOSITORY/backend:$CI_COMMIT_TAG .
