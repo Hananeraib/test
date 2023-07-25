@@ -14,6 +14,7 @@ default:
 
 stages:
   - build
+  - test
   - deploy
 
 build_backend:
@@ -60,6 +61,13 @@ build_frontend:
         - react/blogapi/**/* 
         # TRIGGER THE JOB ONLY WHEN THERE'S MODIFICATION ON THE
         # FRONTEND FILES
+
+test_var:
+  stage: test
+  tags:
+    - ansible
+  script:
+    - echo $CI_COMMIT_TAG
 
 deploy:
   stage: deploy
