@@ -15,6 +15,7 @@ default:
 stages:
   - build
   - test
+  
   - deploy
 
 build_backend:
