@@ -15,7 +15,6 @@ default:
 stages:
   - build
   - test
-
   - deploy
 
 build_backend:
@@ -72,12 +71,14 @@ test_build_tag:
   before_script:
   - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" $REGISTRY/artifactory/$REPOSITORY/
   script:
-    - docker pull $REGISTRY/$REPOSITORY/frontend:latest || true
-    - cd ./react/blogapi
-    - docker build --cache-from $REGISTRY/$REPOSITORY/frontend:latest -t $REGISTRY/$REPOSITORY/frontend:$CI_COMMIT_TAG .
-    - docker push $REGISTRY/$REPOSITORY/frontend:$CI_COMMIT_TAG 
+    - docker pull $REGISTRY/$REPOSITORY/backend:latest || true
+    - cd ./django
+    - docker build --cache-from $REGISTRY/$REPOSITORY/backend:latest -t $REGISTRY/$REPOSITORY/backend:$CI_COMMIT_TAG .
+    - docker push $REGISTRY/$REPOSITORY/backend:$CI_COMMIT_TAG 
   rules:
     - if: $CI_COMMIT_TAG
+  tags:
+    - docker
 
 
 
