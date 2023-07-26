@@ -71,7 +71,7 @@ build_version_tag:
     - docker pull $REGISTRY/$REPOSITORY/frontend:latest || true
     - cd ./django
     - docker build --cache-from $REGISTRY/$REPOSITORY/backend:latest -t $REGISTRY/$REPOSITORY/backend:$CI_COMMIT_TAG .
-    - cd .././react/blogapi
+    - cd ../react/blogapi
     - docker build --cache-from $REGISTRY/$REPOSITORY/frontend:latest -t $REGISTRY/$REPOSITORY/frontend:$CI_COMMIT_TAG .
     - docker push $REGISTRY/$REPOSITORY/backend:$CI_COMMIT_TAG 
     - docker push $REGISTRY/$REPOSITORY/frontend:$CI_COMMIT_TAG 
