@@ -28,7 +28,7 @@ function Copyright() {
 			</Link>{' '}
 			{new Date().getFullYear()}
 			{'.'}
-			 -Modified by <em>SII MAROC Onboarding</em>
+			 -Modified by <em>SII MAROC Onboarding & Test phase</em>
 		</Typography>
 	);
 }
