@@ -17,9 +17,9 @@ services:
     image: vps-da62cdaf.vps.ovh.net:8082/pfeblog/backend:latest
     hostname: backend
     deploy:
-      replicas: 4
+      replicas: 3
       update_config:
-        parallelism: 1
+        parallelism: 2
         delay: 10s
     networks:
       - web
