@@ -14,7 +14,7 @@ services:
     ports:
       - 5432:5432
   backend:
-    image: vps-da62cdaf.vps.ovh.net:8082/pfeblog/backend:latest
+    image: app_backend:latest
     hostname: backend
     deploy:
       replicas: 4
@@ -29,7 +29,7 @@ services:
     depends_on:
       - database
   frontend:
-    image: vps-da62cdaf.vps.ovh.net:8082/pfeblog/frontend:latest
+    image: app_frontend:latest
     hostname: frontend
     networks:
       - web
