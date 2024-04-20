@@ -14,7 +14,7 @@ services:
     ports:
       - 5432:5432
   backend:
-    image: app_backend:latest
+    image: pfeblog_backend:latest
     hostname: backend
     deploy:
       replicas: 4
@@ -29,7 +29,7 @@ services:
     depends_on:
       - database
   frontend:
-    image: app_frontend:latest
+    image: pfeblog_frontend:latest
     hostname: frontend
     networks:
       - web
@@ -38,7 +38,7 @@ services:
     depends_on:
       - backend
   reverse-proxy:
-    image: nginx:latest
+    image: reverse-proxy:latest
     volumes:
       - ./nginx/nginx_default.conf:/etc/nginx/nginx.conf
     ports:
