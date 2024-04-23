@@ -16,10 +16,10 @@
       # THE SRC FILE WE WILL COPY IT
       src: ./../docker-compose.prod.yml
       # THE DESTINATION FOLDER WHERE TO COPY 
-      dest: ./pfeblog/
+      dest: /home/hanane/PFE-project/lab_migration_k8s/docker-compose.prod.yml
 
   # THE SAME TASK FOR NGINX CONFIGURATION (FOLDER) 
   - name: copy nginx conf
     copy: 
       src: ./../nginx
-      dest: ./pfeblog
+      dest: /home/hanane/PFE-project/lab_migration_k8s/nginx
