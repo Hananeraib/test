@@ -25,13 +25,13 @@
     # USINGE DOCKER LOGIN SSH-CMD FROM "community.docker" MODULE
     # LOGIN TO OUR PRIVATE IMAGE REGISTRY (JFROG)
     docker_login:
-      registry: vps-da62cdaf.vps.ovh.net:8082/artifactory/pfeblog/
+      registry: "{{ REGISTRY }}"
       # CALLING FOR THE VAR "registry_usr" STORED IN THE VAULT FILE TO
       # USE IT AS AUTH FOR REGISTRY
-      username: "{{registry_usr}}"
+      username: "{{ registry_usr }}"
       # CALLING FOR THE VAR "registry_pwd" STORED IN THE VAULT FILE TO
       # USE IT AS AUTH FOR REGISTRY
-      password: "{{registry_pwd}}"
+      password: "{{ registry_pwd }}"
 
   - name: deploy a stack
     # USING DOCKER STACK MODULE TO RUN A DOCKER COMPOSE AS A DOCKER STACK
