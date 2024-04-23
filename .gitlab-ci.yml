@@ -18,10 +18,10 @@ stages:
 build_backend:
   stage: build
   script:
-    - docker pull $REPOSITORY/app_backend:latest || true
+    - docker pull $REPOSITORY/pfeblog_backend:latest || true
     - cd ./django
-    - docker build --cache-from $REPOSITORY/app_backend:latest -t $REPOSITORY/app_backend:latest .
-    - docker push $REPOSITORY/app_backend:latest 
+    - docker build --cache-from $REPOSITORY/pfeblog_backend:latest -t $REPOSITORY/pfeblog_backend:latest .
+    - docker push $REPOSITORY/pfeblog_backend:latest 
   rules:
     - if: $CI_COMMIT_BRANCH == "dev-new_lab"
       changes:
@@ -30,10 +30,10 @@ build_backend:
 build_frontend:
   stage: build
   script:
-    - docker pull $REPOSITORY/app_frontend:latest || true
+    - docker pull $REPOSITORY/pfeblog_frontend:latest || true
     - cd ./react/blogapi
-    - docker build --cache-from $REPOSITORY/app_frontend:latest -t $REPOSITORY/app_frontend:latest .
-    - docker push $REPOSITORY/app_frontend:latest 
+    - docker build --cache-from $REPOSITORY/pfeblog_frontend:latest -t $REPOSITORY/pfeblog_frontend:latest .
+    - docker push $REPOSITORY/pfeblog_frontend:latest 
   rules:
     - if: $CI_COMMIT_BRANCH == "dev-new_lab"
       changes:
@@ -42,14 +42,14 @@ build_frontend:
 build_version_tag:
   stage: build
   script:
-    - docker pull $REPOSITORY/app_backend:latest || true
-    - docker pull $REPOSITORY/app_frontend:latest || true
+    - docker pull $REPOSITORY/pfeblog_backend:latest || true
+    - docker pull $REPOSITORY/pfeblog_frontend:latest || true
     - cd ./django
-    - docker build --cache-from $REPOSITORY/app_backend:latest -t $REPOSITORY/app_backend:$CI_COMMIT_TAG .
+    - docker build --cache-from $REPOSITORY/pfeblog_backend:latest -t $REPOSITORY/pfeblog_backend:$CI_COMMIT_TAG .
     - cd ../react/blogapi
-    - docker build --cache-from $REPOSITORY/app_frontend:latest -t $REPOSITORY/app_frontend:$CI_COMMIT_TAG .
-    - docker push $REPOSITORY/app_backend:$CI_COMMIT_TAG 
-    - docker push $REPOSITORY/app_frontend:$CI_COMMIT_TAG 
+    - docker build --cache-from $REPOSITORY/pfeblog_frontend:latest -t $REPOSITORY/pfeblog_frontend:$CI_COMMIT_TAG .
+    - docker push $REPOSITORY/pfeblog_backend:$CI_COMMIT_TAG 
+    - docker push $REPOSITORY/pfeblog_frontend:$CI_COMMIT_TAG 
   rules:
     - if: $CI_COMMIT_TAG
 
@@ -64,3 +64,4 @@ deploy:
   allow_failure: false  
   only:
     - dev-new_lab
+
