@@ -45,6 +45,6 @@
       name: pfeblog
       # DEFINE THE SWARM's STACK FILE (THE DOCKER COMPOSE FILE)
       compose:
-        - /home/centos/pfeblog/docker-compose.prod.yml
+        - /home/hanane/PFE-project/lab_migration_k8s/docker-compose.prod.yml
       # SEND AUTHENTICATION DETAILS TO SWARM AGENTS
       with_registry_auth: yes
