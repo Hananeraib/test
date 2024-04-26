@@ -1,11 +1,11 @@
 image: docker:20.10.16
 
 variables:
-  DOCKER_TLS_CERTDIR: ""
+  #DOCKER_TLS_CERTDIR: ""
   REGISTRY_USERNAME: "hananeraib"
   REGISTRY_PASSWORD: "hanane0602@"
-  REGISTRY: "docker.io"
-  REPOSITORY: "hananeraib/migration_k8s"
+  #REGISTRY: ""
+  REPOSITORY: "hananeraib"
 
 default:
   tags:
@@ -15,8 +15,13 @@ stages:
   - build
   - deploy
 
+
 build_backend:
   stage: build
+
+  before_script:
+    - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD"
+
   script:
     - docker pull $REPOSITORY/pfeblog_backend:latest || true
     - cd ./django
@@ -29,6 +34,9 @@ build_backend:
 
 build_frontend:
   stage: build
+
+  before_script:
+    - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD"
   script:
     - docker pull $REPOSITORY/pfeblog_frontend:latest || true
     - cd ./react/blogapi
