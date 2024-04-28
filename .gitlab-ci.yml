@@ -16,9 +16,9 @@ stages:
 
 build_backend:
   stage: build
+
   before_script:
-    - echo "192.168.28.145  docker" >> /etc/hosts # Add this line to map the 'docker' hostname to the IP address
-    - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" 192.168.28.145
+    - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD"
 
   script:
     - docker pull $REPOSITORY/pfeblog-backend:latest || true
@@ -32,9 +32,9 @@ build_backend:
 
 build_frontend:
   stage: build
+
   before_script:
-    - echo "192.168.28.145  docker" >> /etc/hosts # Add this line to map the 'docker' hostname to the IP address
-    - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD" 192.168.28.145
+    - docker login -u $REGISTRY_USERNAME -p "$REGISTRY_PASSWORD"
 
   script:
     - docker pull $REPOSITORY/pfeblog-frontend:latest || true
@@ -48,9 +48,7 @@ build_frontend:
 
 build_version_tag:
   stage: build
-  before_script:
-    - echo "192.168.28.145  docker" >> /etc/hosts # Add this line to map the 'docker' hostname to the IP address
-
+  
   script:
     - docker pull $REPOSITORY/pfeblog-backend:latest || true
     - docker pull $REPOSITORY/pfeblog-frontend:latest || true
