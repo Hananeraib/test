@@ -1,5 +1,6 @@
 FROM node:18-alpine
 WORKDIR /react
+
 COPY package*.json ./
 RUN npm install
 RUN npm install -g serve
