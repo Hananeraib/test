@@ -19,7 +19,8 @@ build_backend:
   stage: build
 
   before_script:
-  - docker login -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD" 
+    - echo "$REGISTRY_PASSWORD"
+    - docker login -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD" 
 
 
   script:
