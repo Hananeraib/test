@@ -19,7 +19,8 @@ build_backend:
   stage: build
 
   before_script:
-    - echo "$REGISTRY_PASSWORD" | docker login -u "$REGISTRY_USERNAME" --password-stdin
+  - echo "$REGISTRY_PASSWORD" | docker login -u "$REGISTRY_USERNAME" --password-stdin 192.168.28.145:2375
+
 
   script:
     - docker pull $REPOSITORY/pfeblog-backend:latest || true
@@ -35,7 +36,7 @@ build_frontend:
   stage: build
 
   before_script:
-    - echo "$REGISTRY_PASSWORD" | docker login -u "$REGISTRY_USERNAME" --password-stdin
+  - echo "$REGISTRY_PASSWORD" | docker login -u "$REGISTRY_USERNAME" --password-stdin 192.168.28.145:2375
 
   script:
     - docker pull $REPOSITORY/pfeblog-frontend:latest || true
