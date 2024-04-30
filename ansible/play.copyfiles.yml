@@ -17,8 +17,6 @@
       src: ./../docker-compose.prod.yml
       # THE DESTINATION FOLDER WHERE TO COPY 
       dest: /home/hanane/PFE-project/lab_migration_k8s/docker-compose.prod.yml
-    remote_user: hanane
-    ansible_ssh_pass: hanane
   # THE SAME TASK FOR NGINX CONFIGURATION (FOLDER) 
   - name: copy nginx conf
     copy: 
