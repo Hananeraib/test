@@ -5,7 +5,6 @@ FROM python:3.11-alpine
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 
-
 WORKDIR /django
 COPY requirements.txt ./
 ############################
