@@ -1,4 +1,5 @@
-  # THIS PLAYBOOK COMMANDS THE DOCKER SWARM MANAGER NODE TO APPLY
+  
+# THIS PLAYBOOK COMMANDS THE DOCKER SWARM MANAGER NODE TO APPLY
   # THE STACK FILE ("docker-compose.prod.yml") COPIED BY THE 
   # "play.copyfiles.yml" PLAYBOOK ON THE WORKER NODES
   ### ---
@@ -16,22 +17,22 @@
   tasks: 
     # THIS TASK DECRYPTS AND LOADS VARIABLES THAT ARE STORED IN VAULT FILE
     # THE VAULT FILE IS CALLED "vault.yml" WE MENTIONNED IT BY THE ATTRIBUT "file" 
-  - name: include vault
-    ansible.builtin.include_vars:
+#  - name: include vault
+#    ansible.builtin.include_vars:
       # DEFINE THE VAULT FILE ("vault.yml")
-      file: vault.yml
+#      file: vault.yml
 
   - name: log to private registry
     # USINGE DOCKER LOGIN SSH-CMD FROM "community.docker" MODULE
     # LOGIN TO OUR PRIVATE IMAGE REGISTRY (JFROG)
     docker_login:
-      registry: "{{ REGISTRY }}"
+      registry: "https://registry-1.docker.io/v2/"
       # CALLING FOR THE VAR "registry_usr" STORED IN THE VAULT FILE TO
       # USE IT AS AUTH FOR REGISTRY
-      username: "{{ registry_usr }}"
+      username: "hananeraib"
       # CALLING FOR THE VAR "registry_pwd" STORED IN THE VAULT FILE TO
       # USE IT AS AUTH FOR REGISTRY
-      password: "{{ registry_pwd }}"
+      password: "hanane0602@"
 
   - name: deploy a stack
     # USING DOCKER STACK MODULE TO RUN A DOCKER COMPOSE AS A DOCKER STACK
