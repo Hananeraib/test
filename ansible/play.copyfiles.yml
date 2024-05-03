@@ -14,9 +14,9 @@
     # USING COPY BUILTIN ANSIBLE's MODULE
     copy: 
       # THE SRC FILE WE WILL COPY IT
-      src: ./../docker-compose.prod.yml
+      src: "./../docker-compose.prod.yml"
       # THE DESTINATION FOLDER WHERE TO COPY 
-      dest: /home/hanane/PFE-project/lab_migration_k8s/docker-compose.prod.yml
+      dest: "/home/hanane/PFE-project/lab_migration_k8s/docker-compose.prod.yml"
   # THE SAME TASK FOR NGINX CONFIGURATION (FOLDER) 
   - name: copy nginx conf
     copy: 
