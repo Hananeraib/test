@@ -16,22 +16,22 @@
   tasks: 
     # THIS TASK DECRYPTS AND LOADS VARIABLES THAT ARE STORED IN VAULT FILE
     # THE VAULT FILE IS CALLED "vault.yml" WE MENTIONNED IT BY THE ATTRIBUT "file" 
-#  - name: include vault
-#    ansible.builtin.include_vars:
+  - name: include vault
+    ansible.builtin.include_vars:
       # DEFINE THE VAULT FILE ("vault.yml")
-#      file: vault.yml
+      file: vault.yml
 
   - name: log to private registry
     # USINGE DOCKER LOGIN SSH-CMD FROM "community.docker" MODULE
     # LOGIN TO OUR PRIVATE IMAGE REGISTRY (JFROG)
     docker_login:
-      registry: "https://registry-1.docker.io/v2/"
+      registry: "{{ REGISTRY }}"
       # CALLING FOR THE VAR "registry_usr" STORED IN THE VAULT FILE TO
       # USE IT AS AUTH FOR REGISTRY
-      username: "hananeraib"
+      username: "{{ registry_usr }}"
       # CALLING FOR THE VAR "registry_pwd" STORED IN THE VAULT FILE TO
       # USE IT AS AUTH FOR REGISTRY
-      password: "hanane0602@"
+      password: "{{ registry_pwd }}"
 
   - name: deploy a stack
     # USING DOCKER STACK MODULE TO RUN A DOCKER COMPOSE AS A DOCKER STACK
