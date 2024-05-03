@@ -70,7 +70,7 @@ build_version_tag:
 deploy:
   stage: deploy
   tags:
-    - ansible
+    - rootless
   script:
     - ansible-playbook ansible/play.copyfiles.yml
     - ansible-playbook --vault-password-file $VAULT_KEY ansible/play.stack.yml
