@@ -73,7 +73,7 @@ deploy:
     - rootless
   script:
     - ansible-playbook ansible/play.copyfiles.yml
-    - ansible-playbook --vault-password-file $VAULT_KEY ansible/play.stack.yml
+    - ansible-playbook --vault-password-file /variables/VAULT_KEY ansible/play.stack.yml
   when: manual
   allow_failure: false
   only:
