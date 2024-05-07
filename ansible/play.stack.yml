@@ -28,7 +28,7 @@
     # USINGE DOCKER LOGIN SSH-CMD FROM "community.docker" MODULE
     # LOGIN TO OUR PRIVATE IMAGE REGISTRY (JFROG)
     docker_login:
-      registry: "{{ REGISTRY | default('https://registry-1.docker.io/v2/')}}"
+      registry: "https://registry-1.docker.io/v2/"
       # CALLING FOR THE VAR "registry_usr" STORED IN THE VAULT FILE TO
       # USE IT AS AUTH FOR REGISTRY
       username: "{{ registry_usr }}"
