@@ -4,8 +4,12 @@
   become: yes 
   # TO NOT COLLECT & DEBUG USELESS DATA (optimize time)
   gather_facts: no 
+  connection: ssh
+
 
   vars: 
+    ansible_ssh_pass: "hanane"
+
     # DEFINE THE PYTHON INTERPRETER FOLDER IN THE CONTROLLER NODE
     ansible_python_interpreter: /usr/bin/python3 
 
