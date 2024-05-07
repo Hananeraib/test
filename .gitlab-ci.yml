@@ -23,7 +23,7 @@ build_backend:
   stage: build
 
   before_script:
-    - docker login -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD" "https://registry-1.docker.io/v2/"
+    - docker login -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD" $REGISTRY
 
 
   script:
