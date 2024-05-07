@@ -4,7 +4,7 @@ variables:
 #  DOCKER_TLS_CERTDIR: ""
   REGISTRY_USERNAME: "hananeraib"
   REGISTRY_PASSWORD: "hanane0602@"
-  #REGISTRY: ""
+  REGISTRY: "https://registry-1.docker.io/v2/"
   REPOSITORY: "hananeraib"
 
 services:
