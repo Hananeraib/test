@@ -73,7 +73,7 @@ deploy:
     - rootless
   script:
     - ansible-playbook ansible/play.copyfiles.yml
-    - ansible-playbook --vault-password-file /home/hanane/PFE-project/lab_migration_k8s/ansible/vault_key.txt ansible/play.stack.yml
+    - ansible-playbook --vault-password-file $VAULT_NEW_KEY ansible/play.stack.yml
   when: manual
   allow_failure: false
   only:
