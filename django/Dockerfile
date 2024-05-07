@@ -1,5 +1,4 @@
 FROM python:3.11-alpine
-
 # allows the Python output to be sent straight to the terminal
 # It also prevents issues such as the application crashing without giving relevant details
 ENV PYTHONUNBUFFERED 1
