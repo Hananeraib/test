@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os  # Ajouté pour utiliser os.getenv
 #test CI CD 14/07/2023 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,11 +82,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'blog',
-        'USER': 'blogadmin',
-        'PASSWORD': 'blogadmin',
-        'HOST': 'database',
-        'PORT': '5432',
+        'NAME': os.getenv('POSTGRES_DB', 'blog'),
+        'USER': os.getenv('POSTGRES_USER', 'blogadmin'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'blogadmin'),
+        'HOST': os.getenv('DATABASE_HOST', 'database-service'),
+        'PORT': os.getenv('POSTGRES_PORT', '5432'),
     }
     #    'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
