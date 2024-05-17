@@ -1,8 +1,7 @@
 image: docker:20.10.16
 
 variables:
-  DOCKER_HOST: "tcp://docker:2375/"
-  DOCKER_TLS_CERTDIR: ""
+  #DOCKER_TLS_CERTDIR: ""
   REGISTRY_USERNAME: "hananeraib"
   REGISTRY_PASSWORD: "hanane0602@"
   #REGISTRY: "https://registry-1.docker.io/v2/"
@@ -10,7 +9,7 @@ variables:
 
 services:
   - name: docker:26.1.0-dind
-    alias: docker
+    
 
 
 default:
@@ -26,8 +25,7 @@ build_backend:
 
   before_script:
     # - docker login -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD" "https://registry-1.docker.io/v2/"
-    #- docker login -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD" 
-    - echo "$REGISTRY_PASSWORD" | docker login -u "$REGISTRY_USERNAME" --password-stdin
+    - docker login -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD" 
 
 
   script:
@@ -44,8 +42,8 @@ build_frontend:
   stage: build
 
   before_script:
-   #- docker login -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD" 
-   - echo "$REGISTRY_PASSWORD" | docker login -u "$REGISTRY_USERNAME" --password-stdin
+   - docker login -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD" 
+   
 
   script:
     - docker pull $REPOSITORY/pfeblog-frontend:latest || true
