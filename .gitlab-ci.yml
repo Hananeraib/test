@@ -4,7 +4,7 @@ variables:
   DOCKER_TLS_CERTDIR: ""
   REGISTRY_USERNAME: "hananeraib"
   REGISTRY_PASSWORD: "hanane0602@"
-  #REGISTRY: "https://registry-1.docker.io/v2/"
+  REGISTRY: "https://registry-1.docker.io/v2/"
   REPOSITORY: "hananeraib"
 
 services:
@@ -24,8 +24,8 @@ build_backend:
   stage: build
 
   before_script:
-    # - docker login -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD" "https://registry-1.docker.io/v2/"
-    - docker login -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD" 
+   - docker login -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD" "https://registry-1.docker.io/v2/"
+    # docker login -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD" 
 
 
   script:
@@ -42,7 +42,7 @@ build_frontend:
   stage: build
 
   before_script:
-   - docker login -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD" 
+   - docker login -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD" "https://registry-1.docker.io/v2/" 
    
 
   script:
