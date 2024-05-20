@@ -1,7 +1,7 @@
 image: docker:20.10.16
 
 variables:
-  #DOCKER_TLS_CERTDIR: ""
+  DOCKER_TLS_CERTDIR: ""
   REGISTRY_USERNAME: "hananeraib"
   REGISTRY_PASSWORD: "hanane0602@"
   #REGISTRY: "https://registry-1.docker.io/v2/"
