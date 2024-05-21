@@ -29,9 +29,10 @@ build_backend:
 
 
   script:
-    - docker pull $REPOSITORY/pfeblog-backend:latest || true
+    # - docker pull $REPOSITORY/pfeblog-backend:latest || true
     - cd ./django
-    - docker build --cache-from $REPOSITORY/pfeblog-backend:latest -t $REPOSITORY/pfeblog-backend:latest .
+    # - docker build --cache-from $REPOSITORY/pfeblog-backend:latest -t $REPOSITORY/pfeblog-backend:latest .
+    - docker build -t $REPOSITORY/pfeblog-backend:latest .
     - docker push $REPOSITORY/pfeblog-backend:latest
   rules:
     - if: $CI_COMMIT_BRANCH == "dev-new_lab"
