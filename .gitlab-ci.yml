@@ -84,7 +84,7 @@ deploy:
   allow_failure: false
   only:
     - dev-new_lab 
-    -dev-k8s_lab
+    - dev-k8s_lab
 
 
 
