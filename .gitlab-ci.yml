@@ -35,6 +35,7 @@ build_backend:
     - docker push $REPOSITORY/pfeblog-backend:latest
   rules:
     - if: $CI_COMMIT_BRANCH == "dev-new_lab"
+    - if: $CI_COMMIT_BRANCH == "dev-k8s_lab"
       changes:
         - django/**/*
 
@@ -52,6 +53,8 @@ build_frontend:
     - docker push $REPOSITORY/pfeblog-frontend:latest
   rules:
     - if: $CI_COMMIT_BRANCH == "dev-new_lab"
+    - if: $CI_COMMIT_BRANCH == "dev-k8s_lab"
+
       changes:
         - react/blogapi/**/*
 
@@ -81,6 +84,7 @@ deploy:
   allow_failure: false
   only:
     - dev-new_lab 
+    -dev-k8s_lab
 
 
 
